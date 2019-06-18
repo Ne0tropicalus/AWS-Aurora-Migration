@@ -1,15 +1,17 @@
 #!/bin/bash
+export rootdir="~/dumps"
+export code="~/AWS-Aurora-Migration"
 export aurora_tgt=${2}
 export bu_src=${1^^}
 
 ## grab schema backups from S3##
 
-rm -f ./schema/${bu_src}/*.*
-/usr/bin/time -f "%E" aws s3 sync s3://prod-mysql-dumpfiles/${bu_src}/ ./schema/${bu_src}/ --exclude "*" --include "*.schema.*"
+rm -f ${rootdir}/schema/${bu_src}/*.*
+/usr/bin/time -f "%E" aws s3 sync s3://prod-mysql-dumpfiles/${bu_src}/ ${rootdir}/schema/${bu_src}/ --exclude "*" --include "*.schema.*"
 
 ## loop through the schema files - unzipping and applying to target Aurora ##
 
-ls -1 ./schema/${bu_src}/*.gz | while read sfile
+ls -1 ${rootdir}/schema/${bu_src}/*.gz | while read sfile
 do
 echo "----------[unzipping $sfile]----------"
 /usr/bin/time -f "%E" gunzip $sfile
@@ -26,15 +28,15 @@ done
 echo "**************SCHEMA JOB COMPLETE******************"
 
 echo "getting indexes from Aurora databases"
-mysql --login-path=${aurora_tgt} --skip-column-names < part-a.sql | while IFS=, read db table
+mysql --login-path=${aurora_tgt} --skip-column-names < ${code}/part-a.sql | while IFS=, read db table
 do
   echo "checking $db.$table"
-  mysql --login-path=${aurora_tgt} --skip-column-names -e "set @db='${db}', @table='${table}'; source ./part-b.sql;" >> ./remove_${aurora_tgt}_indexes.sql
+  mysql --login-path=${aurora_tgt} --skip-column-names -e "set @db='${db}', @table='${table}'; source ${code}/part-b.sql;" >> ${rootdir}/remove_${aurora_tgt}_indexes.sql
 done
 
 echo "********DROPPING INDEXES************"
-mysql --login-path=${aurora_tgt} -f < ./remove_${aurora_tgt}_indexes.sql
-mv ./remove_${aurora_tgt}_indexes.sql ./remove_${aurora_tgt}_indexes.DONE
+mysql --login-path=${aurora_tgt} -f < ${rootdir}/remove_${aurora_tgt}_indexes.sql
+mv ${rootdir}/remove_${aurora_tgt}_indexes.sql ${rootdir}/remove_${aurora_tgt}_indexes.DONE
 
 echo "show databases" | mysql --login-path=${aurora_tgt} --disable-column-names | while read db
 do
@@ -46,12 +48,12 @@ done
 echo "******non-FK Indexes and Triggers dropped********"
 ## grab data backups from S3##
 
-rm -f ./data/${bu_src}/*.gz
-/usr/bin/time -f "%E" aws s3 sync s3://prod-mysql-dumpfiles/${bu_src}/ ./data/${bu_src}/ --exclude "*" --include "*.data.*"
+rm -f ${rootdir}/data/${bu_src}/*.gz
+/usr/bin/time -f "%E" aws s3 sync s3://prod-mysql-dumpfiles/${bu_src}/ ${rootdir}/data/${bu_src}/ --exclude "*" --include "*.data.*"
 
 ## loop through the data files - unzipping and applying to target Aurora ##
 
-ls -1 ./data/${bu_src}/*.gz | while read sfile
+ls -1 ${rootdir}/data/${bu_src}/*.gz | while read sfile
 do
 echo "----------[unzipping $sfile]----------"
 /usr/bin/time -f "%E" gunzip $sfile
@@ -67,7 +69,7 @@ echo "**************DATA JOB COMPLETE******************"
 ## loop through the POST_DROP files ##
 echo "----------Rebuilding indexes and adding triggers back--------------"
 
-ls -1 ./schema/${bu_src}/*.sql_POST_DROP | while read sfile
+ls -1 ${rootdir}/schema/${bu_src}/*.sql_POST_DROP | while read sfile
 do
 echo "=========={Processing $sfile}=========="
 /usr/bin/time -f "%E" mysql --login-path=${aurora_tgt} -f < ${sfile}
