@@ -1,0 +1,31 @@
+#!/bin/bash
+export paudit="psql -h ps-audit-db.c4nnkcktyqqd.us-east-1.rds.amazonaws.com -U pgadmin -p 5432 -d aurora-audits"
+
+########CLEAN THE DIRECTORY#########
+rm -fr ./audits/${1}
+mkdir ./audits/${1}
+
+echo "schema.table,row_count" > ./audits/${1}_audit.csv
+
+mysql --login-path=$1 --skip-column-names -f -e \
+        "select distinct table_schema from information_schema.tables where table_schema not in \
+        ('information_schema', 'sys', 'performance_schema', 'mysql', 'tmp');" | while read schema
+  do
+  mysql --login-path=$1 --skip-column-names -f -e \
+        "select concat('select \"', table_schema, '.', table_name, '\" as schema_table, count(*) as row_count from ', \
+         table_schema, '.', table_name, ' union ') as 'Query Row' \
+         from information_schema.tables where table_schema = '${schema}';'" > ./audits/${1}/${schema}.out
+  echo "(select null, null limit 0);" >> ./audits/${1}/${schema}.out
+  done
+
+ls -1 ./audits/${1}/*.out | while read auditsql
+do
+   mysql --login-path=$1 --skip-column-names -f < $auditsql | sed 's/\t/,/g' >> ./audits/${1}_audit.csv
+done
+
+echo "-->uploading database audit to S3"
+aws s3 cp ./audits/${1}_audit.csv s3://aurora-database-audits/
+
+echo "==>Inserting counts into postgres table"
+cat ./audits/${1}_audit.csv | sed 's/\./,/g' | sed "s/^/${1},/g" | $paudit -c "copy public.database_audits from STDIN csv header;"
+echo "--==={Audit Complete for $1}===--"
