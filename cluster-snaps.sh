@@ -1,4 +1,11 @@
 #!/bin/bash
+#################################################################
+# Requires:    jq                                               #
+#              mysql client for linux installed                 #
+#              .mylogin.cnf in home directory (mysql config)    #
+#              aws cli for linux                                #
+#              slack webhook api with keys                      #
+#################################################################
 
 export slackweb="https://hooks.slack.com/services/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"
 export slackchnl="aurora-snapshots"

@@ -1,4 +1,9 @@
 #!/bin/bash
+#################################################################
+# Requires:    mysql client for linux installed                 #
+#              .mylogin.cnf in home directory (mysql config)    #
+#              aws cli for linux                                #
+#################################################################
 export rootdir="~/database_team"
 export code="~/AWS-Aurora-Migration"
 export instance=${1}
