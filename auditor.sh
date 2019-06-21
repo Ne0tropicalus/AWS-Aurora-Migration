@@ -22,10 +22,10 @@ mysql --login-path=$1 --skip-column-names -f -e \
   do
   echo "+++[Auditing tables in ${schema}]+++"
   mysql --login-path=$1 --skip-column-names -f -e \
-        "select concat('select \""', table_schema, '.', table_name, '\"" as schema_table, \
+        "select concat('select \"', table_schema, '.', table_name, '\" as schema_table, \
 	   count(*) as row_count from ', \
          table_schema, '.', table_name, ' union ') as 'Query Row' \
-         from information_schema.tables where table_schema = '${schema}';" \
+         from information_schema.tables where table_schema = '${schema}';')" \
 	 > ${audit_dir}/audits/${1}/${schema}.out
   echo "(select null, null limit 0);" >> ${audit_dir}/audits/${1}/${schema}.out
   done
