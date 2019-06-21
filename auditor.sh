@@ -20,6 +20,7 @@ mysql --login-path=$1 --skip-column-names -f -e \
         "select distinct table_schema from information_schema.tables where table_schema not in \
         ('information_schema', 'sys', 'performance_schema', 'mysql', 'tmp');" | while read schema
   do
+  echo "+++[Auditing tables in ${schema}]+++"
   mysql --login-path=$1 --skip-column-names -f -e \
         "select concat('select \""', table_schema, '.', table_name, '\"" as schema_table, \
 	   count(*) as row_count from ', \
