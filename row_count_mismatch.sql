@@ -16,4 +16,4 @@ with compare as
 select x.*, abs(x.aurora_count - x.on_prem_count) as difference
 from compare x
 where abs(x.aurora_count - x.on_prem_count) > 0
-order by 5 desc;
+order by 6;
