@@ -11,14 +11,12 @@ export code=/home/ubuntu/AWS-Aurora-Migration
 export onprem=${1}
 export aurora=${2}
 
-$paudit -A -t -c \
-	-v onprem=${onprem} \
-	-v aurora=${aurora} \
+$paudit -v onprem=${onprem} \
+	    -v aurora=${aurora} \
         -f ${code}/missing_schemas.sql > ${audit_dir}/missing_schemas_${onprem}_${aurora}.out	
 
-$paudit -A -t -c \
-	-v onprem=${onprem} \
-	-v aurora=${aurora} \
+$paudit -v onprem=${onprem} \
+	    -v aurora=${aurora} \
         -f ${code}/row_count_mismatch.sql > ${audit_dir}/row_count_mismatch_${onprem}_${aurora}.out	
 
 echo "-->uploading audit comparisons to S3"
