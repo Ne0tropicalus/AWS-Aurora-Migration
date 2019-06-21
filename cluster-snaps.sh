@@ -17,10 +17,10 @@ export slackchnl="aurora-snapshots"
 export user="AWS Aurora"
 export cdate=`date +%Y%m%d`
 tdate=0
-if [ "${1}}" == "w" ]; then
-   tdate=7
-else
+if [ "${1}" == "w" ]; then
    tdate=60
+else
+   tdate=7
 fi
 export fdate=`date --date=' - ${tdate} days' +%Y%m%d`
 err_cnt=0
