@@ -80,4 +80,5 @@ echo "=========={Processing $sfile}=========="
 /usr/bin/time -f "%E" mysql --login-path=${aurora_tgt} -f < ${sfile}
 mv ${sfile} ${sfile}.DONE 
 done
+mysql --login-path=${aurora_tgt} -f -e "CREATE DATABASE if not exists tmp;"
 echo "!!!MYSQL Restore to Aurora completed!!!!"
