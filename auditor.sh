@@ -42,6 +42,6 @@ aws s3 cp ${audit_dir}/audits/${1}_audit.csv s3://aurora-database-audits/
 echo "==>Inserting counts into postgres table"
 cat ${audit_dir}/audits/${1}_audit.csv | sed 's/\./,/g' \
 	| sed "s/^/${1},/g" \
-	| $paudit -c "copy public.database_audits from STDIN csv header;"
+	| $paudit -c "copy public.database_audits(dbinstance,schema_name,table_name,row_count) from STDIN csv header;"
 
 echo "--==={Audit Complete for $1}===--"
