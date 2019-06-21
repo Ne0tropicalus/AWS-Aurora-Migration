@@ -9,7 +9,7 @@
 
 #####################################################################
 # This same script can be run daily as well as weekly               #
-# Just pass either 'w' or 'd' at the commnad line - defaul is daily # 
+# Just pass either 'w' or 'd' at the command line-default is daily  # 
 #####################################################################
 
 export slackweb="https://hooks.slack.com/services/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"
