@@ -12,15 +12,15 @@ export onprem=${1}
 export aurora=${2}
 
 $paudit -v onprem=${onprem} \
-	    -v aurora=${aurora} \
+	-v aurora=${aurora} \
         -f ${code}/missing_schemas.sql > ${audit_dir}/missing_schemas_${onprem}_${aurora}.out	
 
 $paudit -v onprem=${onprem} \
-	    -v aurora=${aurora} \
+	-v aurora=${aurora} \
         -f ${code}/row_count_mismatch.sql > ${audit_dir}/row_count_mismatch_${onprem}_${aurora}.out	
 
 echo "-->uploading audit comparisons to S3"
-aws s3 cp ${audit_dir}/row_count_mismatch_${onprem}_${aurora}.out s3://aurora-database-audits/
+aws s3 cp ${audit_dir}/missing_schemas_${onprem}_${aurora}.out s3://aurora-database-audits/
 aws s3 cp ${audit_dir}/row_count_mismatch_${onprem}_${aurora}.out s3://aurora-database-audits/
 
 echo "--==={Audit comparisons completed for ${onprem} and ${aurora} }===--"

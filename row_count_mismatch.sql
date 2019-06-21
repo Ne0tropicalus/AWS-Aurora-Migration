@@ -8,10 +8,10 @@ with compare as
  from database_audits a
  join database_audits b on a.schema_name = b.schema_name
  and a.table_name = b.table_name
- and a.dbinstance = @onprem 
- and a.audit_run_ts = (select max(j.audit_run_ts) from database_audits j where j.dbinstance = @onprem)
- and b.dbinstance = @aurora 
- and b.audit_run_ts = (select max(j.audit_run_ts) from database_audits j where j.dbinstance = @aurora)
+ and a.dbinstance = :'onprem' 
+ and a.audit_run_ts = (select max(j.audit_run_ts) from database_audits j where j.dbinstance = :'onprem')
+ and b.dbinstance = :'aurora' 
+ and b.audit_run_ts = (select max(j.audit_run_ts) from database_audits j where j.dbinstance = :'aurora')
 )
 select x.*, abs(x.aurora_count - x.on_prem_count) as difference
 from compare x
