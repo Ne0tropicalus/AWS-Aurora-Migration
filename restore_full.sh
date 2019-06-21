@@ -4,8 +4,8 @@
 #              .mylogin.cnf in home directory (mysql config)    #
 #              aws cli for linux                                #
 #################################################################
-export rootdir="/home/ubuntu/dumps"
-export code="/home/ubuntu/AWS-Aurora-Migration"
+export rootdir=/home/ubuntu/dumps
+export code=/home/ubuntu/AWS-Aurora-Migration
 export aurora_tgt=${2}
 export bu_src=${1^^}
 
@@ -80,4 +80,5 @@ echo "=========={Processing $sfile}=========="
 /usr/bin/time -f "%E" mysql --login-path=${aurora_tgt} -f < ${sfile}
 mv ${sfile} ${sfile}.DONE 
 done
+mysql --login-path=${aurora_tgt} -f -e "CREATE DATABASE if not exists tmp;"
 echo "!!!MYSQL Restore to Aurora completed!!!!"

@@ -7,7 +7,7 @@
 #              aws cli for linux                                #
 #              route to postgres database ps-audit-db in aws    #
 #################################################################
-export audit_dir="/home/ubuntu/database_team"
+export audit_dir=/home/ubuntu/database_team
 export paudit="psql -h ps-audit-db.c4nnkcktyqqd.us-east-1.rds.amazonaws.com -U pgadmin -p 5432 -d aurora-audits"
 
 ########CLEAN THE DIRECTORY#########
