@@ -81,4 +81,5 @@ echo "=========={Processing $sfile}=========="
 mv ${sfile} ${sfile}.DONE 
 done
 mysql --login-path=${aurora_tgt} -f -e "CREATE DATABASE if not exists tmp;"
+mysql --login-path=${aurora_tgt} -f -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON *.* TO appuser@'%'IDENTIFIED BY 'PSch00l2k19!!';"
 echo "!!!MYSQL Restore to Aurora completed!!!!"
