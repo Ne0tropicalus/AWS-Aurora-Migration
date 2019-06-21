@@ -22,7 +22,7 @@ if [ "${1}" == "w" ]; then
 else
    tdate=7
 fi
-export fdate=`date --date=' - ${tdate} days' +%Y%m%d`
+export fdate=`date --date=' - '''${tdate}''' days' +%Y%m%d`
 err_cnt=0
 
 function slackweb()
