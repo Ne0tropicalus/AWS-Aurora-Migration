@@ -7,11 +7,22 @@
 #              slack webhook api with keys                      #
 #################################################################
 
+#####################################################################
+# This same script can be run daily as well as weekly               #
+# Just pass either 'w' or 'd' at the command line-default is daily  # 
+#####################################################################
+
 export slackweb="https://hooks.slack.com/services/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"
 export slackchnl="aurora-snapshots"
 export user="AWS Aurora"
 export cdate=`date +%Y%m%d`
-export fdate=`date --date=' - 60 days' +%Y%m%d`
+tdate=0
+if [ "${1}}" == "w" ]; then
+   tdate=7
+else
+   tdate=60
+fi
+export fdate=`date --date=' - ${tdate} days' +%Y%m%d`
 err_cnt=0
 
 function slackweb()
@@ -30,7 +41,7 @@ while read cluster
 do
     slackweb "Aurora_notify" ":database: => Backing up $cluster"
     /usr/bin/time -f "%E" aws rds create-db-cluster-snapshot \
-       --db-cluster-snapshot-identifier "${cluster}-${cdate}" \
+       --db-cluster-snapshot-identifier "${cluster}-${1}-${cdate}" \
        --db-cluster-identifier "${cluster}"
    if [ "$?" -eq "255" ]; then
       slackweb "Aurora_notify" ":sadpanda: ${cluster} snapshot failed"
@@ -44,11 +55,13 @@ if [ $err_cnt -gt 0 ]; then
    exit 1
 fi
 
-aws rds describe-db-cluster-snapshots --snapshot-type manual | jq -r '.DBClusterSnapshots[] | [.DBClusterSnapshotIdentifier, .SnapshotCreateTime] | @csv' | sed 's/"//g' | while IFS=, read cluster snaptime
+aws rds describe-db-cluster-snapshots --snapshot-type manual | \
+    jq -r '.DBClusterSnapshots[] | [.DBClusterSnapshotIdentifier, .SnapshotCreateTime] | @csv' | \
+    sed 's/"//g' | while IFS=, read cluster snaptime
 do
   export d1=$(date -d "$fdate" +%s)
   export d2=$(date -d "$snaptime" +%s)
-  export ddiff=$(( (d1 - d2) / 86400 ))
+#  export ddiff=$(( (d1 - d2) / 86400 ))
   if [[ $d2 -le $d1 ]]; then
       echo "[[[[[rolling off aged snapshot $cluster]]]]]"
       slackweb "Aurora_notify" ":heavy_minus_sign: [rolling off aged snapshot $cluster]"
