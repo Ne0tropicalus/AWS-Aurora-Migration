@@ -4,8 +4,8 @@
 #              .mylogin.cnf in home directory (mysql config)    #
 #              aws cli for linux                                #
 #################################################################
-export rootdir="/home/ubuntu/database_team"
-export code="/home/ubuntu/AWS-Aurora-Migration"
+export rootdir=/home/ubuntu/database_team
+export code=/home/ubuntu/AWS-Aurora-Migration
 export instance=${1}
 export target=${2}
 
