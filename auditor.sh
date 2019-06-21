@@ -17,15 +17,12 @@ mkdir ${audit_dir}/audits/${1}
 echo "schema.table,row_count" > ${audit_dir}/audits/${1}_audit.csv
 
 mysql --login-path=$1 --skip-column-names -f -e \
-        "select distinct table_schema from information_schema.tables where table_schema not in \
-        ('information_schema', 'sys', 'performance_schema', 'mysql', 'tmp');" | while read schema
+        "select distinct table_schema from information_schema.tables where table_schema not in ('information_schema', 'sys', 'performance_schema', 'mysql', 'tmp');" | \
+  while read schema
   do
   echo "+++[Auditing tables in ${schema}]+++"
   mysql --login-path=$1 --skip-column-names -f -e \
-        "select concat('select ', table_schema, '.', table_name, ' as schema_table, \
-	   count(*) as row_count from ', \
-         table_schema, '.', table_name, ' union ') as 'Query Row' \
-         from information_schema.tables where table_schema = '${schema}';" \
+        "select concat('select ', table_schema, '.', table_name, ' as schema_table, count(*) as row_count from ', table_schema, '.', table_name, ' union ') as 'Query Row' from information_schema.tables where table_schema = '${schema}';" \
 	 > ${audit_dir}/audits/${1}/${schema}.out
   echo "(select null, null limit 0);" >> ${audit_dir}/audits/${1}/${schema}.out
   done
