@@ -33,241 +33,253 @@
 #     --host=coredb-05-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
 #     --user=root \
 #     --password
-mysql_config_editor set \
-     --login-path=coredb-06 \
-     --host=coredb-06-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-07 \
-     --host=coredb-07-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-08 \
-     --host=coredb-08-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
+#mysql_config_editor set \
+#     --login-path=coredb-06 \
+#     --host=coredb-06-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-07 \
+#     --host=coredb-07-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-08 \
+#     --host=coredb-08-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
 #mysql_config_editor set \
 #     --login-path=coredb-09 \
 #     --host=coredb-09-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
 #     --user=root \
 #     --password
+#mysql_config_editor set \
+#     --login-path=coredb-10 \
+#     --host=coredb-10-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-11 \
+#     --host=coredb-11-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-12 \
+#     --host=coredb-12-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-13 \
+#     --host=coredb-13-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-14 \
+#     --host=coredb-14-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-15 \
+#     --host=coredb-15-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-16 \
+#     --host=coredb-16-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-17 \
+#     --host=coredb-17-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-18 \
+#     --host=coredb-18-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-19 \
+#     --host=coredb-19-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-20 \
+#     --host=coredb-20-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-21 \
+#     --host=coredb-21-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-22 \
+#     --host=coredb-22-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-23 \
+#     --host=coredb-23-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-24 \
+#     --host=coredb-24-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#     --login-path=coredb-25 \
+#     --host=coredb-25-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
+#     --user=root \
+#     --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-01 \
+#    --host=10.0.200.1 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-02 \
+#    --host=10.0.200.2 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-03 \
+#    --host=10.0.200.3 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-04 \
+#    --host=10.0.200.4 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-05 \
+#    --host=10.0.200.5 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-06 \
+#    --host=10.0.200.6 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-07 \
+#    --host=10.0.200.7 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-08 \
+#    --host=10.0.200.8 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-09 \
+#    --host=10.0.200.9 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-10 \
+#    --host=10.0.200.10 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-11 \
+#    --host=10.0.200.11 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-12 \
+#    --host=10.0.200.12 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-13 \
+#    --host=10.0.200.17 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-14 \
+#    --host=10.0.200.18 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-15 \
+#    --host=10.0.200.19 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-16 \
+#    --host=10.0.200.20 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-17 \
+#    --host=10.0.200.85 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-18 \
+#    --host=10.0.200.86 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-19 \
+#    --host=10.0.200.87 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-20 \
+#    --host=10.0.200.88 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-21 \
+#    --host=10.0.200.89 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-22 \
+#    --host=10.0.200.100 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-23 \
+#    --host=10.0.200.101 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
+#mysql_config_editor set \
+#    --login-path=pr-coredb-24 \
+#    --host=10.0.200.102 \
+#    --port=3306 \
+#    --user=dmsagent \
+#    --password
 mysql_config_editor set \
-     --login-path=coredb-10 \
-     --host=coredb-10-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-11 \
-     --host=coredb-11-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-12 \
-     --host=coredb-12-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-13 \
-     --host=coredb-13-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-14 \
-     --host=coredb-14-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-15 \
-     --host=coredb-15-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-16 \
-     --host=coredb-16-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-17 \
-     --host=coredb-17-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-18 \
-     --host=coredb-18-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-19 \
-     --host=coredb-19-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-20 \
-     --host=coredb-20-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-21 \
-     --host=coredb-21-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-22 \
-     --host=coredb-22-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-23 \
-     --host=coredb-23-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-24 \
-     --host=coredb-24-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-     --login-path=coredb-25 \
-     --host=coredb-25-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
-     --user=root \
-     --password
-mysql_config_editor set \
-    --login-path=pr-coredb-01 \
-    --host=10.0.200.1 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-02 \
-    --host=10.0.200.2 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-03 \
-    --host=10.0.200.3 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-04 \
-    --host=10.0.200.4 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-05 \
-    --host=10.0.200.5 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-06 \
-    --host=10.0.200.6 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-07 \
-    --host=10.0.200.7 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-08 \
-    --host=10.0.200.8 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-09 \
-    --host=10.0.200.9 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-10 \
-    --host=10.0.200.10 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-11 \
-    --host=10.0.200.11 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-12 \
-    --host=10.0.200.12 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-13 \
-    --host=10.0.200.17 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-14 \
-    --host=10.0.200.18 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-15 \
-    --host=10.0.200.19 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-16 \
-    --host=10.0.200.20 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-17 \
-    --host=10.0.200.85 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-18 \
-    --host=10.0.200.86 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-19 \
-    --host=10.0.200.87 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-20 \
-    --host=10.0.200.88 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-21 \
-    --host=10.0.200.89 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-22 \
-    --host=10.0.200.100 \
-    --port=3306 \
-    --user=dmsagent \
-    --password
-mysql_config_editor set \
-    --login-path=pr-coredb-23 \
-    --host=10.0.200.101 \
+    --login-path=pr-coredb-25 \
+   --host=10.0.200.103 \
     --port=3306 \
     --user=dmsagent \
     --password
