@@ -35,11 +35,22 @@ function slackweb()
     while [[ "$( curl -s -d "payload=$json" "${slackweb}")" != "ok" ]]; do sleep 5; done
 }
 
+function newrelic()
+{
+     local events=$1
+
+     echo ${events} | gzip -c -f | \
+     curl --data-binary @- -X POST -H "Content-Type: application/json" -H \
+        "X-Insert-Key: 0QhdzA_9TDU7RU8wUhTc_Imsd3yOI1GW" -H \
+	"Content-Encoding: gzip" \
+	https://insights-collector.newrelic.com/v1/accounts/1166112/events
+}
 
 slackweb "Aurora_notify" "*<Beginning Aurora Snapshots>*"
 while read cluster
 do
     slackweb "Aurora_notify" ":database: => Backing up $cluster"
+    newrelic """{"eventType":"aurora-snapshot-create","snapshot":"$cluster"}"""
     /usr/bin/time -f "%E" aws rds create-db-cluster-snapshot \
        --db-cluster-snapshot-identifier "${cluster}-${1}-${cdate}" \
        --db-cluster-identifier "${cluster}"
@@ -65,6 +76,7 @@ do
   if [[ $d2 -le $d1 ]]; then
       echo "[[[[[rolling off aged snapshot $cluster]]]]]"
       slackweb "Aurora_notify" ":heavy_minus_sign: [rolling off aged snapshot $cluster]"
+      newrelic """{"eventType":"snapshot-rolloff","snapshot":"$cluster"}"""
       aws rds delete-db-cluster-snapshot --db-cluster-snapshot-identifier "$cluster"
   fi
 done
