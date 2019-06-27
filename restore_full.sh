@@ -22,7 +22,7 @@ echo "----------[unzipping $sfile]----------"
 /usr/bin/time -f "%E" gunzip $sfile
 echo "=========={Processing $sfile}=========="
 sed 's/\sDEFINER=`[^`]*`@`[^`]*`//g' -i ${sfile%.*} 
-sed 's/ENGINE=MyISAM/ENGINE=InnoDB/g' -i ${sfile%.*}
+sed 's/ENGINE=[Mm][Yy][Ii][Ss][Aa][Mm]/ENGINE=InnoDB/g' -i ${sfile%.*}
 sed 's|^DROP TABLE|-- DROP TABLE|g;s|^CREATE TABLE|CREATE TABLE IF NOT EXISTS|g' \
     ${sfile%.*} | egrep -v 'DROP DATABASE' | sed 's|^CREATE DATABASE|-- CREATE DATABASE|g' > ${sfile%.*}_POST_DROP 
 /usr/bin/time -f "%E" mysql --login-path=${aurora_tgt} -f < ${sfile%.*}
@@ -80,6 +80,7 @@ echo "=========={Processing $sfile}=========="
 /usr/bin/time -f "%E" mysql --login-path=${aurora_tgt} -f < ${sfile}
 mv ${sfile} ${sfile}.DONE 
 done
+#############Create a tmp schema and appuser on all instances####################
 mysql --login-path=${aurora_tgt} -f -e "CREATE DATABASE if not exists tmp;"
 mysql --login-path=${aurora_tgt} -f -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP ON *.* TO appuser@'%'IDENTIFIED BY 'PSch00l2k19!!';"
 echo "!!!MYSQL Restore to Aurora completed!!!!"

@@ -105,13 +105,13 @@ do
    delete_dbc ${id}
    # The deletions take a while so will restore to a temporary set of names #
    ############ Create cluster from snapshot - this only creates a cluster container - stupid AWS :-( #####
-   #create_dbc ${id} ${snapshot}
+   create_dbc ${id} ${snapshot}
    ############# Create db instance and add to cluster ###############
-   #create_dbi ${id}
+   create_dbi ${id}
    ############ Rename the cluster from tmp to STG ############
-   #rename_dbc ${id}
+   rename_dbc ${id}
    ########### Rename the db instance from tmp to STG #########
-   #rename_dbi ${id}
+   rename_dbi ${id}
 done < aurora.list
 echo "--==={COMPLETED STG Environment}===--"
 aws sns publish --phone-number ${mobile} \
