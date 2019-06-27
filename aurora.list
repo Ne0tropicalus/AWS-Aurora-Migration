@@ -1,5 +1,10 @@
 cachedb-cluster
-coredb-01-cluster
 opsdb-01-cluster
 penddb-combined
 scandb02-cluster
+coredb-01-cluster
+coredb-02-cluster
+coredb-03-cluster
+coredb-04-cluster
+coredb-09-cluster
+coredb-17-cluster
