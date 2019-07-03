@@ -22,7 +22,7 @@ echo "----------[unzipping $sfile]----------"
 /usr/bin/time -f "%E" gunzip $sfile
 echo "=========={Processing $sfile}=========="
 sed 's/\sDEFINER=`[^`]*`@`[^`]*`//g' -i ${sfile%.*} 
-sed 's/ENGINE=[Mm][Yy][Ii][Ss][Aa][Mm]/ENGINE=InnoDB/g' -i ${sfile%.*}
+sed 's/MRG_[Mm][Yy][Ii][Ss][Aa][Mm]/InnoDB/g;s/ENGINE=Memory/ENGINE=InnoDB/g;s/[Mm][Yy][Ii][Ss][Aa][Mm]/InnoDB/g' -i ${sfile%.*}
 sed 's|^DROP TABLE|-- DROP TABLE|g;s|^CREATE TABLE|CREATE TABLE IF NOT EXISTS|g' \
     ${sfile%.*} | egrep -v 'DROP DATABASE' | sed 's|^CREATE DATABASE|-- CREATE DATABASE|g' > ${sfile%.*}_POST_DROP 
 /usr/bin/time -f "%E" mysql --login-path=${aurora_tgt} -f < ${sfile%.*}

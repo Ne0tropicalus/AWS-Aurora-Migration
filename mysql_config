@@ -277,12 +277,12 @@
 #    --port=3306 \
 #    --user=dmsagent \
 #    --password
-#mysql_config_editor set \
-#    --login-path=pr-coredb-25 \
-#   --host=10.0.200.103 \
-#    --port=3306 \
-#    --user=dmsagent \
-#    --password
+mysql_config_editor set \
+   --login-path=pr-coredb-25 \
+   --host=10.0.200.103 \
+   --port=3306 \
+   --user=dmsagent \
+   --password
 mysql_config_editor set \
     --login-path=archive2017 \
     --host=archive-2017-cluster.cluster-c4nnkcktyqqd.us-east-1.rds.amazonaws.com \
